@@ -5,12 +5,9 @@ export default {
     background: '#FAFAFA',
     text500: '#262626',
     text400: '#8E8E8E',
+    gray100: '#DBDBDB',
 
-    yellow500: '#FEDA77',
-    orange500: '#F58529',
-    pink500: '#DD2A7B',
-    purple500: '#8134AF',
-    blue500: '#515BD4',
+    defaultGradient: ['#DD2A7B', '#F58529', '#FEDA77'],
   },
   fonts: {
     regular: 'Arimo_400Regular',
@@ -19,10 +16,10 @@ export default {
     bold: 'Arimo_700Bold',
   },
   fontSize: {
-    xxsmall: moderateScale(10),
-    small: moderateScale(12),
-    regular: moderateScale(16),
-    large: moderateScale(20),
+    xsmall: moderateScale(8),
+    small: moderateScale(10),
+    regular: moderateScale(12),
+    large: moderateScale(16),
     xlarge: moderateScale(24),
   },
 };
