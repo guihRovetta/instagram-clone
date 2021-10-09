@@ -6,12 +6,11 @@ import {
   useFonts,
 } from '@expo-google-fonts/arimo';
 import AppLoading from 'expo-app-loading';
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Text, View } from 'react-native';
 import { ThemeProvider } from 'styled-components/native';
 
 import theme from './src/global/styles/theme';
+import Routes from './src/routes';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -27,12 +26,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text style={{ fontFamily: theme.fonts.bold }}>
-          Open up App.js to start working on your app!
-        </Text>
-        <StatusBar style="auto" />
-      </View>
+      <Routes />
     </ThemeProvider>
   );
 }
