@@ -5,7 +5,9 @@ export default {
     background: '#FAFAFA',
     text500: '#262626',
     text400: '#8E8E8E',
+
     gray100: '#DBDBDB',
+    gray200: '#A9A9A9',
 
     defaultGradient: ['#DD2A7B', '#F58529', '#FEDA77'],
   },
