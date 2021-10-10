@@ -6,6 +6,7 @@ import { StoryFlatList, StoryFlatListSeparator } from './styles';
 export type StoryItemType = {
   name: string;
   uri: string;
+  hasStory?: boolean;
 };
 
 type StoryListProps = {
@@ -17,7 +18,9 @@ const StoryList = ({ items }: StoryListProps) => {
     <StoryFlatList
       data={items}
       keyExtractor={(item) => item?.name}
-      renderItem={({ item }) => <Story name={item?.name} uri={item?.uri} />}
+      renderItem={({ item }) => (
+        <Story name={item?.name} uri={item?.uri} hasStory={item?.hasStory} />
+      )}
       ItemSeparatorComponent={StoryFlatListSeparator}
     />
   );

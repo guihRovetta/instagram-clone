@@ -1,22 +1,18 @@
 import React from 'react';
 
-import { Container, Gradient, ProfileImage, Name } from './styles';
+import UserImage from '../UserImage';
+import { Container, Name } from './styles';
 
 type StoryProps = {
   uri: string;
   name: string;
+  hasStory?: boolean;
 };
 
-const Story = ({ uri, name }: StoryProps) => {
+const Story = ({ uri, name, hasStory = false }: StoryProps) => {
   return (
     <Container>
-      <Gradient>
-        <ProfileImage
-          source={{
-            uri,
-          }}
-        />
-      </Gradient>
+      <UserImage uri={uri} hasStory={hasStory} />
 
       <Name numberOfLines={1}>{name}</Name>
     </Container>
