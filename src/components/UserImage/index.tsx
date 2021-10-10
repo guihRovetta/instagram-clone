@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTheme } from 'styled-components';
 
 import { Container, Gradient, ProfileImage } from './styles';
@@ -7,22 +7,19 @@ export type UserImageProps = {
   uri: string;
   hasStory?: boolean;
   size?: 'small' | 'normal';
+  seenStory?: boolean;
 };
 
 const UserImage = ({
   uri,
   hasStory = false,
   size = 'normal',
+  seenStory = false,
 }: UserImageProps) => {
   const theme = useTheme();
-  const [seenStory, setSeenStory] = useState(false);
-
-  const handlePressStory = () => {
-    setSeenStory(true);
-  };
 
   return (
-    <Container size={size} onPress={handlePressStory}>
+    <Container size={size}>
       <Gradient
         size={size}
         hasStory={hasStory}
@@ -32,7 +29,7 @@ const UserImage = ({
             ? ['transparent', 'transparent']
             : hasStory && !seenStory
             ? [...theme.colors.defaultGradient]
-            : [theme.colors.text400, theme.colors.text400]
+            : [theme.colors.gray200, theme.colors.gray200]
         }
       >
         <ProfileImage

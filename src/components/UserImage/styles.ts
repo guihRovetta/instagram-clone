@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 import { UserImageProps } from '.';
 
-export const Container = styled.Pressable<Omit<UserImageProps, 'uri'>>`
+export const Container = styled.View<Omit<UserImageProps, 'uri'>>`
   width: ${({ size }) => (size === 'normal' ? '56px' : '28px')};
   justify-content: center;
   align-items: center;

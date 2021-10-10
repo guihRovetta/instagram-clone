@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import UserImage from '../UserImage';
 import { Container, Name } from './styles';
@@ -10,11 +10,19 @@ type StoryProps = {
 };
 
 const Story = ({ uri, name, hasStory = false }: StoryProps) => {
-  return (
-    <Container>
-      <UserImage uri={uri} hasStory={hasStory} />
+  const [seenStory, setSeenStory] = useState(false);
 
-      <Name numberOfLines={1}>{name}</Name>
+  const handlePressStory = () => {
+    setSeenStory(true);
+  };
+
+  return (
+    <Container onPress={handlePressStory}>
+      <UserImage uri={uri} hasStory={hasStory} seenStory={seenStory} />
+
+      <Name numberOfLines={1} seenStory={seenStory}>
+        {name}
+      </Name>
     </Container>
   );
 };
