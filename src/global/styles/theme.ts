@@ -9,6 +9,8 @@ export default {
     gray100: '#DBDBDB',
     gray200: '#A9A9A9',
 
+    red500: '#EA1D2C',
+
     defaultGradient: ['#DD2A7B', '#F58529', '#FEDA77'],
   },
   fonts: {
@@ -18,6 +20,13 @@ export default {
     bold: 'Arimo_700Bold',
   },
   fontSize: {
+    xsmall: moderateScale(8),
+    small: moderateScale(10),
+    regular: moderateScale(12),
+    large: moderateScale(16),
+    xlarge: moderateScale(24),
+  },
+  lineHeight: {
     xsmall: moderateScale(8),
     small: moderateScale(10),
     regular: moderateScale(12),
