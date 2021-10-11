@@ -3,20 +3,20 @@ import React from 'react';
 import Post from '../Post';
 import { PostFlatList, PostFlatListSeparator } from './styles';
 
-type UserType = {
-  name: string;
-  location?: string;
-  image: Image;
-  hasStory?: boolean;
-};
-
-type Image = {
+export type ImageType = {
   uri: string;
   aspectRation?: 0.8 | 1 | 1.91;
 };
 
-type PostType = {
-  image: Image;
+export type UserType = {
+  name: string;
+  location?: string;
+  image: ImageType;
+  hasStory?: boolean;
+};
+
+export type PostType = {
+  image: ImageType;
   likesAmount?: number;
   description: string;
   commentsAmount?: number;
