@@ -27,11 +27,12 @@ type GetPosts = {
 
 const THREE_DAYS = 3 * 24 * 60;
 const TEN_MINUTES = 10 * 60 * 1000;
+const LIMIT = 10;
 const AVAILABLE_ASPECT_RATIO = [0.8, 1, 1.91];
 
 const formatPosts = (data: GetPosts, page: number) => {
   const posts = data?.data?.map((item, index) => {
-    const pageNumber = index + page * 10;
+    const pageNumber = index + page * LIMIT;
 
     return {
       id: `${item?.id}-${pageNumber}`,
@@ -71,7 +72,7 @@ const formatPosts = (data: GetPosts, page: number) => {
 
 const getPosts = async (page: number): Promise<PostItem[]> => {
   const { data } = await api.get<GetPosts>(
-    'custom?_quantity=10&id=uuid&firstName=firstName&lastName=lastName&city=city&country=country&description=text&showLocation=boolean&hasStory=boolean'
+    `custom?_quantity=${LIMIT}&id=uuid&firstName=firstName&lastName=lastName&city=city&country=country&description=text&showLocation=boolean&hasStory=boolean`
   );
 
   const posts = formatPosts(data, page);
