@@ -1,6 +1,8 @@
 import React from 'react';
+import { ActivityIndicator } from 'react-native';
 
 import Post from '../Post';
+import PostEmpty from '../Post/PostEmpty';
 import { PostFlatList, PostFlatListSeparator } from './styles';
 
 export type ImageType = {
@@ -36,9 +38,16 @@ type PostListProps = {
     | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | null
     | undefined;
+  onEndReached: () => void;
+  isLoading?: boolean;
 };
 
-const PostList = ({ items, children }: PostListProps) => {
+const PostList = ({
+  items,
+  children,
+  onEndReached,
+  isLoading = false,
+}: PostListProps) => {
   return (
     <PostFlatList
       ListHeaderComponent={children}
@@ -46,6 +55,9 @@ const PostList = ({ items, children }: PostListProps) => {
       keyExtractor={(item) => item?.id}
       renderItem={({ item }) => <Post data={item} />}
       ItemSeparatorComponent={PostFlatListSeparator}
+      onEndReached={onEndReached}
+      ListFooterComponent={isLoading ? <ActivityIndicator /> : null}
+      ListEmptyComponent={<PostEmpty />}
     />
   );
 };
