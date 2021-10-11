@@ -7,10 +7,12 @@ import {
 } from '@expo-google-fonts/arimo';
 import AppLoading from 'expo-app-loading';
 import React from 'react';
+import { QueryClientProvider } from 'react-query';
 import { ThemeProvider } from 'styled-components/native';
 
 import theme from './src/global/styles/theme';
 import Routes from './src/routes';
+import { queryClient } from './src/services/react-query';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -25,8 +27,10 @@ export default function App() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <Routes />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <Routes />
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
