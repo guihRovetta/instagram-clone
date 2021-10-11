@@ -26,24 +26,27 @@ type GetPosts = {
 };
 
 const THREE_DAYS = 3 * 24 * 60;
+const TEN_MINUTES = 10 * 60 * 1000;
 const AVAILABLE_ASPECT_RATIO = [0.8, 1, 1.91];
 
-const formatPosts = (data: GetPosts) => {
+const formatPosts = (data: GetPosts, page: number) => {
   const posts = data?.data?.map((item, index) => {
+    const pageNumber = index + page * 10;
+
     return {
-      id: item?.id,
+      id: `${item?.id}-${pageNumber}`,
       user: {
         name: `${item?.firstName?.toLowerCase()}.${item?.lastName?.toLowerCase()}`,
         location: `${item?.city}, ${item?.country}`,
         image: {
-          uri: `https://source.unsplash.com/100x100/?person?sig=${index}`,
+          uri: `https://source.unsplash.com/100x100/?person?sig=${pageNumber}`,
           aspectRatio: AVAILABLE_ASPECT_RATIO[1],
         },
         hasStory: item?.hasStory,
       },
       post: {
         image: {
-          uri: `https://source.unsplash.com/random?sig=${index}`,
+          uri: `https://source.unsplash.com/random?sig=${pageNumber}`,
           aspectRatio:
             AVAILABLE_ASPECT_RATIO[
               generateRamdomNumber(0, AVAILABLE_ASPECT_RATIO?.length)
@@ -66,16 +69,18 @@ const formatPosts = (data: GetPosts) => {
   return posts;
 };
 
-const getPosts = async (): Promise<PostItem[]> => {
+const getPosts = async (page: number): Promise<PostItem[]> => {
   const { data } = await api.get<GetPosts>(
     'custom?_quantity=10&id=uuid&firstName=firstName&lastName=lastName&city=city&country=country&description=text&showLocation=boolean&hasStory=boolean'
   );
 
-  const posts = formatPosts(data);
+  const posts = formatPosts(data, page);
 
   return posts;
 };
 
-export const usePosts = () => {
-  return useQuery('posts', getPosts);
+export const usePosts = (page = 0) => {
+  return useQuery(['posts', page], () => getPosts(page), {
+    staleTime: TEN_MINUTES,
+  });
 };
