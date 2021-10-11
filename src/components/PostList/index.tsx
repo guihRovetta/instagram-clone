@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
 
+import { usePosts } from '../../services/hooks/posts/usePosts';
 import Post from '../Post';
 import PostEmpty from '../Post/PostEmpty';
 import { PostFlatList, PostFlatListSeparator } from './styles';
@@ -32,31 +33,41 @@ export type PostItem = {
 };
 
 type PostListProps = {
-  items: PostItem[];
   children?:
     | React.ComponentType<any>
     | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | null
     | undefined;
-  onEndReached: () => void;
-  isLoading?: boolean;
 };
 
-const PostList = ({
-  items,
-  children,
-  onEndReached,
-  isLoading = false,
-}: PostListProps) => {
+const PostList = ({ children }: PostListProps) => {
+  const [page, setPage] = useState(0);
+  const [posts, setPosts] = useState<PostItem[]>([]);
+
+  const { data = [], isLoading, isFetching } = usePosts(page);
+
+  useEffect(() => {
+    if (data?.length === 0) return;
+
+    setPosts((previousState) => [...previousState, ...data]);
+  }, [data]);
+
+  const handleEndReachedOnPostList = () => {
+    if (isLoading || isFetching) return;
+    setPage((previousValue) => previousValue + 1);
+  };
+
   return (
     <PostFlatList
       ListHeaderComponent={children}
-      data={items}
+      data={posts}
       keyExtractor={(item) => item?.id}
       renderItem={({ item }) => <Post data={item} />}
       ItemSeparatorComponent={PostFlatListSeparator}
-      onEndReached={onEndReached}
-      ListFooterComponent={isLoading ? <ActivityIndicator /> : null}
+      onEndReached={handleEndReachedOnPostList}
+      ListFooterComponent={
+        isLoading || isFetching ? <ActivityIndicator /> : null
+      }
       ListEmptyComponent={<PostEmpty />}
     />
   );
