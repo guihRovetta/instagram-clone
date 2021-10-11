@@ -5,7 +5,7 @@ import { PostFlatList, PostFlatListSeparator } from './styles';
 
 export type ImageType = {
   uri: string;
-  aspectRation?: 0.8 | 1 | 1.91;
+  aspectRatio: number;
 };
 
 export type UserType = {

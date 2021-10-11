@@ -14,7 +14,7 @@ const PostImage = ({ image }: PostImageProps) => {
         uri: image?.uri,
       }}
       resizeMode="cover"
-      aspectRatio={image?.aspectRation || 1}
+      aspectRatio={image?.aspectRatio || 1}
     />
   );
 };
