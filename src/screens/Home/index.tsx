@@ -1,8 +1,10 @@
+import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 
 import Header from '../../components/Header';
 import PostList from '../../components/PostList';
 import StoryList from '../../components/StoryList';
+import { usePosts } from '../../services/hooks/posts/usePosts';
 import { Container } from './styles';
 
 const array = [
@@ -47,56 +49,22 @@ const array = [
   },
 ];
 
-const data = {
-  id: 'teste',
-  user: {
-    name: 'gildovigor',
-    location: 'São Paulo, SP',
-    image: {
-      uri: 'https://pbs.twimg.com/profile_images/1436778542705033219/vJA6hDfg_400x400.jpg',
-    },
-    hasStory: true,
-  },
-  post: {
-    image: {
-      uri: 'https://uploads.metropoles.com/wp-content/uploads/2021/08/18094725/gil-do-vigor-8-1024x683.jpg',
-    },
-    likesAmount: 760,
-    description: 'descrição do Vigor',
-    commentsAmount: 26,
-    createdAt: 'há 9 horas',
-  },
-};
-
-const data2 = {
-  id: 'teste2',
-  user: {
-    name: 'gildovigor',
-    location: 'São Paulo, SP',
-    image: {
-      uri: 'https://pbs.twimg.com/profile_images/1436778542705033219/vJA6hDfg_400x400.jpg',
-    },
-    hasStory: true,
-  },
-  post: {
-    image: {
-      uri: 'https://uploads.metropoles.com/wp-content/uploads/2021/08/18094725/gil-do-vigor-8-1024x683.jpg',
-    },
-    likesAmount: 760,
-    description: 'descrição do Vigor',
-    commentsAmount: 26,
-    createdAt: 'há 9 horas',
-  },
-};
-
 const Home = () => {
+  const { data = [], isLoading, isError } = usePosts();
+
+  console.log('------');
+  console.log(data);
+
   return (
     <Container>
+      <StatusBar style="auto" />
       <Header />
 
-      <PostList items={[data, data2]}>
-        <StoryList items={array} />
-      </PostList>
+      {data?.length > 0 && (
+        <PostList items={data}>
+          <StoryList items={array} />
+        </PostList>
+      )}
     </Container>
   );
 };
