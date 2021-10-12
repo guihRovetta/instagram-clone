@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { PostType, UserType } from '../../PostList';
 import {
@@ -6,6 +6,7 @@ import {
   LikesAmount,
   PostDescription,
   PostUserName,
+  ShowCompleteDescriptionButton,
   ShowCompleteDescriptionButtonText,
   ShowAllCommentsButton,
   ShowAllCommentsText,
@@ -21,27 +22,49 @@ type PostFooterProps = {
   post: PostType;
 };
 
+const DESCRIPTION_MAX_CHARACTERS = 80;
+
 const PostFooter = ({ user, post }: PostFooterProps) => {
+  const { name } = user || {};
+  const { likesAmount, description, commentsAmount, createdAt } = post || {};
+
+  const [formattedDescription, setFormattedDescription] = useState(
+    `${description?.substring(
+      0,
+      description?.length > DESCRIPTION_MAX_CHARACTERS
+        ? DESCRIPTION_MAX_CHARACTERS
+        : description?.length - 1
+    )}... `
+  );
+
+  const handleShowCompleteDescription = () => {
+    setFormattedDescription(description);
+  };
+
   return (
     <FooterWrapper>
-      <LikesAmount>{`${post?.likesAmount} curtidas`}</LikesAmount>
+      <LikesAmount>{`${likesAmount} curtidas`}</LikesAmount>
 
-      <PostDescription numberOfLines={2}>
-        <PostUserName>{`${user?.name} `}</PostUserName>
-        {`${post?.description} `}
-        <ShowCompleteDescriptionButtonText>
-          mais
-        </ShowCompleteDescriptionButtonText>
-      </PostDescription>
+      <ShowCompleteDescriptionButton onPress={handleShowCompleteDescription}>
+        <PostDescription>
+          <PostUserName>{`${name} `}</PostUserName>
+          {formattedDescription}
+          {formattedDescription !== description && (
+            <ShowCompleteDescriptionButtonText>
+              mais
+            </ShowCompleteDescriptionButtonText>
+          )}
+        </PostDescription>
+      </ShowCompleteDescriptionButton>
 
       <ShowAllCommentsButton>
         <ShowAllCommentsText>
-          {`Ver todos os ${post?.commentsAmount} comentários`}
+          {`Ver todos os ${commentsAmount} comentários`}
         </ShowAllCommentsText>
       </ShowAllCommentsButton>
 
       <BottomLineWrapper>
-        <CreatedAt>{post?.createdAt}</CreatedAt>
+        <CreatedAt>{createdAt}</CreatedAt>
         <Separator />
         <ShowTranslationButton>
           <ShowTranslationText>Ver tradução</ShowTranslationText>

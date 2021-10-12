@@ -26,6 +26,8 @@ export const PostUserName = styled.Text`
   line-height: ${({ theme }) => theme.lineHeight.large}px;
 `;
 
+export const ShowCompleteDescriptionButton = styled.Pressable``;
+
 export const ShowCompleteDescriptionButtonText = styled.Text`
   color: ${({ theme }) => theme.colors.gray200};
   font-size: ${({ theme }) => theme.fontSize.regular}px;
