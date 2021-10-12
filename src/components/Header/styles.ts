@@ -8,7 +8,7 @@ export const Container = styled.View`
   align-items: center;
   justify-content: space-between;
   margin-top: ${getStatusBarHeight()}px;
-  padding: 0 16px;
+  padding: 0 16px 8px 0;
 `;
 
 export const InstagramLogo = styled.Image`
