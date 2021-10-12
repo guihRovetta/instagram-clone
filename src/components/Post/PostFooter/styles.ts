@@ -76,3 +76,10 @@ export const Separator = styled.View`
   border-radius: 1.5px;
   background-color: ${({ theme }) => theme.colors.gray200};
 `;
+
+export const Hashtag = styled.Text`
+  color: ${({ theme }) => theme.colors.blue500};
+  font-size: ${({ theme }) => theme.fontSize.regular}px;
+  font-family: ${({ theme }) => theme.fonts.regular};
+  line-height: ${({ theme }) => theme.lineHeight.large}px;
+`;
