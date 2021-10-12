@@ -7,11 +7,11 @@ import {
 } from '@expo-google-fonts/arimo';
 import AppLoading from 'expo-app-loading';
 import React from 'react';
+import { LogBox } from 'react-native';
 import { QueryClientProvider } from 'react-query';
-import { ThemeProvider } from 'styled-components/native';
 
-import theme from './src/global/styles/theme';
-import Routes from './src/routes';
+import { ThemeModeProvider } from './src/context/ThemeModeContext';
+import Root from './src/screens/Root';
 import { queryClient } from './src/services/react-query';
 
 export default function App() {
@@ -22,15 +22,17 @@ export default function App() {
     Arimo_700Bold,
   });
 
+  LogBox.ignoreLogs(['Setting a timer']);
+
   if (!fontsLoaded) {
     return <AppLoading />;
   }
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-        <Routes />
-      </ThemeProvider>
-    </QueryClientProvider>
+    <ThemeModeProvider>
+      <QueryClientProvider client={queryClient}>
+        <Root />
+      </QueryClientProvider>
+    </ThemeModeProvider>
   );
 }
