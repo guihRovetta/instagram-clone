@@ -24,6 +24,7 @@ export type PostType = {
   description: string;
   commentsAmount?: number;
   createdAt: string;
+  hashtags?: string[];
 };
 
 export type PostItem = {
