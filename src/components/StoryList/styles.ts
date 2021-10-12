@@ -2,7 +2,7 @@ import { FlatList, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
 import { StoryItemType } from '.';
-import { convertHexToRGBA } from '../../utils/converteHexToRGBA';
+import { convertHexToRGBA } from '../../utils/convertHexToRGBA';
 
 export const StoryFlatList = styled(
   FlatList as new () => FlatList<StoryItemType>
