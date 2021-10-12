@@ -1,19 +1,6 @@
 import { moderateScale } from 'react-native-size-matters';
 
-export default {
-  colors: {
-    background: '#FAFAFA',
-    text500: '#262626',
-    text400: '#8E8E8E',
-
-    gray100: '#DBDBDB',
-    gray200: '#A9A9A9',
-
-    red500: '#EA1D2C',
-    blue500: '#125688',
-
-    defaultGradient: ['#DD2A7B', '#F58529', '#FEDA77'],
-  },
+const DEFAULT_THEME_OBJECT = {
   fonts: {
     regular: 'Arimo_400Regular',
     medium: 'Arimo_500Medium',
@@ -33,5 +20,34 @@ export default {
     regular: moderateScale(12),
     large: moderateScale(16),
     xlarge: moderateScale(24),
+  },
+  colors: {
+    gray100: '#DBDBDB',
+    gray200: '#A9A9A9',
+
+    red500: '#EA1D2C',
+    blue500: '#125688',
+
+    defaultGradient: ['#DD2A7B', '#F58529', '#FEDA77'],
+  },
+};
+
+export const lightTheme = {
+  ...DEFAULT_THEME_OBJECT,
+  colors: {
+    ...DEFAULT_THEME_OBJECT?.colors,
+    background: '#FAFAFA',
+    text500: '#262626',
+    text400: '#8E8E8E',
+  },
+};
+
+export const darkTheme = {
+  ...DEFAULT_THEME_OBJECT,
+  colors: {
+    ...DEFAULT_THEME_OBJECT?.colors,
+    background: '#000000',
+    text500: '#FFFFFF',
+    text400: '#EBEBF5',
   },
 };
