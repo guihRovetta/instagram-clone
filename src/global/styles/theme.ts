@@ -10,6 +10,7 @@ export default {
     gray200: '#A9A9A9',
 
     red500: '#EA1D2C',
+    blue500: '#125688',
 
     defaultGradient: ['#DD2A7B', '#F58529', '#FEDA77'],
   },
