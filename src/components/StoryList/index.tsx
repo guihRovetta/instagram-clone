@@ -29,12 +29,10 @@ const StoryList = () => {
     setPage((previousValue) => previousValue + 1);
   };
 
-  console.log(stories);
-
   return (
     <StoryFlatList
       data={stories}
-      keyExtractor={(item) => item?.name}
+      keyExtractor={(item) => item?.id}
       renderItem={({ item }) => (
         <Story name={item?.name} uri={item?.uri} hasStory={item?.hasStory} />
       )}
