@@ -3,6 +3,7 @@ import ptBR from 'date-fns/locale/pt-BR';
 import { useQuery } from 'react-query';
 
 import { PostItem } from '../../../components/PostList';
+import { generateRandomBoolean } from '../../../utils/generateRandomBoolean';
 import { generateRandomDate } from '../../../utils/generateRandomDate';
 import { generateRamdomNumber } from '../../../utils/generateRandomNumber';
 import { api } from '../../api';
@@ -33,17 +34,18 @@ const AVAILABLE_ASPECT_RATIO = [0.8, 1, 1.91];
 const formatPosts = (data: GetPosts, page: number) => {
   const posts = data?.data?.map((item, index) => {
     const pageNumber = index + page * LIMIT;
+    const hasLocation = generateRandomBoolean();
 
     return {
       id: `${item?.id}-${pageNumber}`,
       user: {
         name: `${item?.firstName?.toLowerCase()}.${item?.lastName?.toLowerCase()}`,
-        location: `${item?.city}, ${item?.country}`,
         image: {
           uri: `https://source.unsplash.com/100x100/?person?sig=${pageNumber}`,
           aspectRatio: AVAILABLE_ASPECT_RATIO[1],
         },
         hasStory: item?.hasStory,
+        ...(hasLocation && { location: `${item?.city}, ${item?.country}` }),
       },
       post: {
         image: {
