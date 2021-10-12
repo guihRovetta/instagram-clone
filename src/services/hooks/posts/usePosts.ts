@@ -6,6 +6,7 @@ import { PostItem } from '../../../components/PostList';
 import { generateRandomBoolean } from '../../../utils/generateRandomBoolean';
 import { generateRandomDate } from '../../../utils/generateRandomDate';
 import { generateRamdomNumber } from '../../../utils/generateRandomNumber';
+import { transformTextOnHashtags } from '../../../utils/transformTextOnHashtags';
 import { api } from '../../api';
 
 type PostData = {
@@ -31,10 +32,12 @@ const TEN_MINUTES = 10 * 60 * 1000;
 const LIMIT = 10;
 const AVAILABLE_ASPECT_RATIO = [0.8, 1, 1.91];
 
-const formatPosts = (data: GetPosts, page: number) => {
+const formatPosts = (data: GetPosts, page: number): PostItem[] => {
   const posts = data?.data?.map((item, index) => {
     const pageNumber = index + page * LIMIT;
+
     const hasLocation = generateRandomBoolean();
+    const numberOfHashtags = generateRamdomNumber(0, 10);
 
     return {
       id: `${item?.id}-${pageNumber}`,
@@ -65,6 +68,12 @@ const formatPosts = (data: GetPosts, page: number) => {
             locale: ptBR,
           }
         ),
+        ...(numberOfHashtags && {
+          hashtags: transformTextOnHashtags(
+            item?.description,
+            numberOfHashtags
+          ),
+        }),
       },
     };
   });
