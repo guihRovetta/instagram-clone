@@ -18,6 +18,10 @@ const AppRouters = () => {
         tabBarIconStyle: { width: 18, height: 18 },
         tabBarActiveTintColor: theme.colors.text500,
         tabBarShowLabel: false,
+        tabBarStyle: {
+          backgroundColor: theme.colors.background,
+          borderTopWidth: 0,
+        },
       }}
     >
       <Screen
