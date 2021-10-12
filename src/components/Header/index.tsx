@@ -13,12 +13,7 @@ import {
 const Header = () => {
   return (
     <Container>
-      <InstagramLogo
-        source={{
-          uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1024px-Instagram_logo.svg.png',
-        }}
-        resizeMode="contain"
-      />
+      <InstagramLogo />
 
       <ActionButtonsWrapper>
         <ActionButton>

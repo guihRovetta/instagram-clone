@@ -2,6 +2,8 @@ import { Feather, AntDesign } from '@expo/vector-icons';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import styled, { css } from 'styled-components/native';
 
+import LetteringLogo from '../../assets/lettering-logo.svg';
+
 export const Container = styled.View`
   flex-direction: row;
   width: 100%;
@@ -11,11 +13,11 @@ export const Container = styled.View`
   padding: 0 16px 8px 0;
 `;
 
-export const InstagramLogo = styled.Image`
-  width: 128px;
-  height: 36px;
-  margin-left: -16px;
-`;
+export const InstagramLogo = styled(LetteringLogo).attrs(({ theme }) => ({
+  width: 128,
+  height: 36,
+  fill: theme?.colors?.text500,
+}))``;
 
 export const ActionButtonsWrapper = styled.View`
   flex-direction: row;
