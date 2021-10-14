@@ -51,9 +51,9 @@ export const ShowTranslationButton = styled.View``;
 
 export const ShowTranslationText = styled.Text`
   color: ${({ theme }) => theme.colors.text500};
-  font-size: ${({ theme }) => theme.fontSize.small}px;
+  font-size: ${({ theme }) => theme.fontSize.regular}px;
   font-family: ${({ theme }) => theme.fonts.semibold};
-  line-height: ${({ theme }) => theme.lineHeight.small}px;
+  line-height: ${({ theme }) => theme.lineHeight.regular}px;
 `;
 
 export const BottomLineWrapper = styled.View`
@@ -64,9 +64,9 @@ export const BottomLineWrapper = styled.View`
 
 export const CreatedAt = styled.Text`
   color: ${({ theme }) => theme.colors.gray200};
-  font-size: ${({ theme }) => theme.fontSize.small}px;
+  font-size: ${({ theme }) => theme.fontSize.regular}px;
   font-family: ${({ theme }) => theme.fonts.regular};
-  line-height: ${({ theme }) => theme.lineHeight.small}px;
+  line-height: ${({ theme }) => theme.lineHeight.regular}px;
 `;
 
 export const Separator = styled.View`

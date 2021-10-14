@@ -31,7 +31,7 @@ const AppRouters = () => {
           tabBarIcon: ({ focused }) => (
             <MaterialCommunityIcons
               name={focused ? 'home-variant' : 'home-variant-outline'}
-              size={24}
+              size={28}
               color={theme.colors.text500}
             />
           ),
@@ -45,7 +45,7 @@ const AppRouters = () => {
           tabBarIcon: ({ focused }) => (
             <Ionicons
               name={focused ? 'search' : 'search-outline'}
-              size={24}
+              size={28}
               color={theme.colors.text500}
             />
           ),
@@ -59,7 +59,7 @@ const AppRouters = () => {
           tabBarIcon: ({ focused }) => (
             <MaterialCommunityIcons
               name={focused ? 'movie' : 'movie-outline'}
-              size={24}
+              size={28}
               color={theme.colors.text500}
             />
           ),
@@ -73,7 +73,7 @@ const AppRouters = () => {
           tabBarIcon: ({ focused }) => (
             <MaterialCommunityIcons
               name={focused ? 'shopping' : 'shopping-outline'}
-              size={24}
+              size={28}
               color={theme.colors.text500}
             />
           ),
@@ -87,7 +87,7 @@ const AppRouters = () => {
           tabBarIcon: ({ focused }) => (
             <Ionicons
               name={focused ? 'person-circle' : 'person-circle-outline'}
-              size={24}
+              size={28}
               color={theme.colors.text500}
             />
           ),

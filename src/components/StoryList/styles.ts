@@ -10,9 +10,8 @@ export const StoryFlatList = styled(
   showsHorizontalScrollIndicator: false,
   horizontal: true,
   contentContainerStyle: {
-    paddingHorizontal: 16,
-    paddingTop: 4,
-    paddingBottom: 8,
+    paddingHorizontal: 20,
+    paddingBottom: 12,
   },
 })`
   border-bottom-width: ${StyleSheet.hairlineWidth}px;
@@ -20,5 +19,5 @@ export const StoryFlatList = styled(
 `;
 
 export const StoryFlatListSeparator = styled.View`
-  margin-right: 16px;
+  margin-right: 32px;
 `;

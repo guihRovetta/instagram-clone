@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components/native';
 
 const baseIconStyle = css`
   color: ${({ theme }) => theme.colors.text500};
-  font-size: 20px;
+  font-size: 24px;
 `;
 
 export const ActionButtonsWrapper = styled.View`

@@ -14,8 +14,8 @@ export const Container = styled.View`
 `;
 
 export const InstagramLogo = styled(LetteringLogo).attrs(({ theme }) => ({
-  width: 128,
-  height: 36,
+  width: 171,
+  height: 48,
   fill: theme?.colors?.text500,
 }))``;
 
