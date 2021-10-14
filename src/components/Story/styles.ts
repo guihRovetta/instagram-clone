@@ -16,7 +16,7 @@ export const Name = styled.Text<NameProps>`
     !seenStory ? theme.colors.text500 : theme.colors.gray200};
   font-size: ${({ theme }) => theme.fontSize.small}px;
   font-family: ${({ theme }) => theme.fonts.regular};
-  margin-top: 2px;
+  margin-top: 4px;
 `;
 
 export const ImageContainer = styled.View``;
