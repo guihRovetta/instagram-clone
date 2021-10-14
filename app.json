@@ -21,6 +21,13 @@
         "wasm",
         "svg"
       ]
+    },
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "userInterfaceStyle": "automatic"
+    },
+    "android": {
+      "userInterfaceStyle": "automatic"
     }
   },
   "name": "instagram-clone"
