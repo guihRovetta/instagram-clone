@@ -19,9 +19,9 @@ export const Gradient = styled(LinearGradient)<Omit<UserImageProps, 'uri'>>`
 `;
 
 export const ProfileImage = styled.Image<Omit<UserImageProps, 'uri'>>`
-  width: ${({ size }) => (size === 'normal' ? '68px' : '33px')};
-  height: ${({ size }) => (size === 'normal' ? '68px' : '33px')};
-  border-radius: ${({ size }) => (size === 'normal' ? '33px' : '16.5px')};
+  width: ${({ size }) => (size === 'normal' ? '67px' : '33px')};
+  height: ${({ size }) => (size === 'normal' ? '67px' : '33px')};
+  border-radius: ${({ size }) => (size === 'normal' ? '33.5px' : '16.75px')};
   border-width: 2px;
   border-color: ${({ theme }) => theme.colors.background};
 `;
