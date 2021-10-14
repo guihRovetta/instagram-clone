@@ -26,7 +26,9 @@ const DEFAULT_THEME_OBJECT = {
     gray200: '#A9A9A9',
 
     red500: '#EA1D2C',
+    blue400: '#0195F7',
     blue500: '#125688',
+    white100: '#FFFFFF',
 
     defaultGradient: ['#DD2A7B', '#F58529', '#FEDA77'],
   },
