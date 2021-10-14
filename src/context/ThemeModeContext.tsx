@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { createContext, ReactNode, useEffect, useState } from 'react';
+import { useColorScheme } from 'react-native';
 
 type ThemeModeType = 'light' | 'dark';
 
@@ -20,6 +21,8 @@ type ThemeModeContextType = {
 export const ThemeModeProvider = ({ children }: ThemeModeProviderProps) => {
   const [themeMode, setThemeMode] = useState<ThemeModeType>('light');
   const [componentMounted, setComponentMounted] = useState(false);
+
+  const systemPreferedTheme = useColorScheme();
 
   const setMode = async (mode: ThemeModeType) => {
     try {
@@ -51,6 +54,12 @@ export const ThemeModeProvider = ({ children }: ThemeModeProviderProps) => {
       }
     })();
   }, []);
+
+  useEffect(() => {
+    if (!systemPreferedTheme) return;
+
+    setMode(systemPreferedTheme);
+  }, [systemPreferedTheme]);
 
   return (
     <ThemeModeContext.Provider
