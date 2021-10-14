@@ -33,8 +33,13 @@ const StoryList = () => {
     <StoryFlatList
       data={stories}
       keyExtractor={(item) => item?.id}
-      renderItem={({ item }) => (
-        <Story name={item?.name} uri={item?.uri} hasStory={item?.hasStory} />
+      renderItem={({ item, index }) => (
+        <Story
+          name={item?.name}
+          uri={item?.uri}
+          hasStory={index === 0 ? false : item?.hasStory}
+          myStory={index === 0}
+        />
       )}
       ItemSeparatorComponent={StoryFlatListSeparator}
       onEndReached={handleEndReachedOnStoriesList}
