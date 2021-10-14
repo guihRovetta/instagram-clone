@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+
+import { Container, Title } from './styles';
 
 const NotFound = () => {
   return (
-    <View>
-      <Text>Em desenvolvimento!</Text>
-    </View>
+    <Container>
+      <Title>Em desenvolvimento!</Title>
+    </Container>
   );
 };
 
