@@ -10,7 +10,7 @@ export const Container = styled.View`
   align-items: center;
   justify-content: space-between;
   margin-top: ${getStatusBarHeight()}px;
-  padding: 0 16px 8px 0;
+  padding: 4px 16px 4px 0;
 `;
 
 export const InstagramLogo = styled(LetteringLogo).attrs(({ theme }) => ({

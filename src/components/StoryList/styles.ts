@@ -12,7 +12,6 @@ export const StoryFlatList = styled(
   contentContainerStyle: {
     paddingHorizontal: 20,
     paddingBottom: 12,
-    flex: 1,
   },
 })`
   border-bottom-width: ${StyleSheet.hairlineWidth}px;
