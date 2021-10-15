@@ -15,3 +15,13 @@ export const PostFlatList = styled(
 export const PostFlatListSeparator = styled.View`
   margin-bottom: 16px;
 `;
+
+export const PostEmptyWrapper = styled.View`
+  margin-top: 24px;
+`;
+
+export const LoadingWrapper = styled.View`
+  margin-top: 24px;
+  align-items: center;
+  justify-content: center;
+`;
