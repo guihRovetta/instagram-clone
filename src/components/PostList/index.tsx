@@ -4,7 +4,12 @@ import { ActivityIndicator } from 'react-native';
 import { usePosts } from '../../services/hooks/posts/usePosts';
 import Post from '../Post';
 import PostEmpty from '../Post/PostEmpty';
-import { PostFlatList, PostFlatListSeparator } from './styles';
+import {
+  PostFlatList,
+  PostFlatListSeparator,
+  PostEmptyWrapper,
+  LoadingWrapper,
+} from './styles';
 
 export type ImageType = {
   uri: string;
@@ -41,6 +46,14 @@ type PostListProps = {
     | undefined;
 };
 
+type RenderItemType = {
+  item: PostItem;
+};
+
+const renderItem = ({ item }: RenderItemType) => {
+  return <Post data={item} />;
+};
+
 const PostList = ({ children }: PostListProps) => {
   const [page, setPage] = useState(0);
   const [posts, setPosts] = useState<PostItem[]>([]);
@@ -49,8 +62,7 @@ const PostList = ({ children }: PostListProps) => {
 
   useEffect(() => {
     if (data?.length === 0) return;
-
-    setPosts((previousState) => [...previousState, ...data]);
+    setPosts((previousState) => [...new Set([...previousState, ...data])]);
   }, [data]);
 
   const handleEndReachedOnPostList = () => {
@@ -63,13 +75,23 @@ const PostList = ({ children }: PostListProps) => {
       ListHeaderComponent={children}
       data={posts}
       keyExtractor={(item) => item?.id}
-      renderItem={({ item }) => <Post data={item} />}
+      renderItem={renderItem}
       ItemSeparatorComponent={PostFlatListSeparator}
       onEndReached={handleEndReachedOnPostList}
       ListFooterComponent={
-        isLoading || isFetching ? <ActivityIndicator /> : null
+        isLoading || isFetching ? (
+          <LoadingWrapper>
+            <ActivityIndicator size="large" />
+          </LoadingWrapper>
+        ) : null
       }
-      ListEmptyComponent={<PostEmpty />}
+      ListEmptyComponent={
+        <PostEmptyWrapper>
+          <PostEmpty />
+        </PostEmptyWrapper>
+      }
+      maxToRenderPerBatch={5}
+      initialNumToRender={5}
     />
   );
 };

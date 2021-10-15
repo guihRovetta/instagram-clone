@@ -3,13 +3,33 @@ import { ActivityIndicator } from 'react-native';
 
 import { useStories } from '../../services/hooks/stories/useStories';
 import Story from '../Story';
-import { StoryFlatList, StoryFlatListSeparator } from './styles';
+import {
+  StoryFlatList,
+  StoryFlatListSeparator,
+  LoadingWrapper,
+} from './styles';
 
 export type StoryItemType = {
   id: string;
   name: string;
   uri: string;
   hasStory?: boolean;
+};
+
+type RenderItemType = {
+  item: StoryItemType;
+  index: number;
+};
+
+const renderItem = ({ item, index }: RenderItemType) => {
+  return (
+    <Story
+      name={item?.name}
+      uri={item?.uri}
+      hasStory={index === 0 ? false : item?.hasStory}
+      myStory={index === 0}
+    />
+  );
 };
 
 const StoryList = () => {
@@ -20,8 +40,8 @@ const StoryList = () => {
 
   useEffect(() => {
     if (data?.length === 0) return;
-
-    setStories((previousState) => [...previousState, ...data]);
+    setStories((previousState) => [...new Set([...previousState, ...data])]);
+    // setStories([]);
   }, [data]);
 
   const handleEndReachedOnStoriesList = () => {
@@ -33,18 +53,15 @@ const StoryList = () => {
     <StoryFlatList
       data={stories}
       keyExtractor={(item) => item?.id}
-      renderItem={({ item, index }) => (
-        <Story
-          name={item?.name}
-          uri={item?.uri}
-          hasStory={index === 0 ? false : item?.hasStory}
-          myStory={index === 0}
-        />
-      )}
+      renderItem={renderItem}
       ItemSeparatorComponent={StoryFlatListSeparator}
       onEndReached={handleEndReachedOnStoriesList}
       ListFooterComponent={
-        isLoading || isFetching ? <ActivityIndicator /> : null
+        isLoading || isFetching ? (
+          <LoadingWrapper>
+            <ActivityIndicator />
+          </LoadingWrapper>
+        ) : null
       }
     />
   );
