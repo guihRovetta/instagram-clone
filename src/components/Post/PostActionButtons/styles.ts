@@ -19,7 +19,7 @@ export const LeftWrapper = styled.View`
 `;
 
 export const ActionLeftButton = styled.Pressable`
-  margin-right: 12px;
+  margin-right: 16px;
 `;
 
 export const RightWrapper = styled.View`
@@ -38,6 +38,7 @@ export const HeartFilledIcon = styled(AntDesign)`
 
 export const CommentIcon = styled(Ionicons)`
   ${baseIconStyle}
+  transform: scaleX(-1);
 `;
 
 export const SendMessageIcon = styled(Feather)`
