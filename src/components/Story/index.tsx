@@ -16,8 +16,7 @@ type StoryProps = {
   myStory?: boolean;
 };
 
-const MY_PROFILE_IMAGE =
-  'https://instagram.fsjk1-1.fna.fbcdn.net/v/t51.2885-19/s150x150/46781785_268863693802859_8678401851621638144_n.jpg?_nc_ht=instagram.fsjk1-1.fna.fbcdn.net&_nc_ohc=_lXdXFiVJUsAX8E5aC0&edm=ABfd0MgBAAAA&ccb=7-4&oh=9bb18408d72dce1a7f499bd2ea689887&oe=616FDBAF&_nc_sid=7bff83';
+const MY_PROFILE_IMAGE = 'https://github.com/guihRovetta.png';
 
 const Story = ({
   uri,
