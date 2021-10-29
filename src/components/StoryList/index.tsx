@@ -41,7 +41,6 @@ const StoryList = () => {
   useEffect(() => {
     if (data?.length === 0) return;
     setStories((previousState) => [...new Set([...previousState, ...data])]);
-    // setStories([]);
   }, [data]);
 
   const handleEndReachedOnStoriesList = () => {
