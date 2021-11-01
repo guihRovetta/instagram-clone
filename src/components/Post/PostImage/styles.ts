@@ -10,4 +10,5 @@ type PhotoProps = {
 export const Photo = styled.Image<PhotoProps>`
   width: ${windowWidth}px;
   height: ${({ aspectRatio }) => windowWidth / aspectRatio}px;
+  background-color: ${({ theme }) => theme.colors.gray100};
 `;

@@ -24,4 +24,5 @@ export const ProfileImage = styled.Image<Omit<UserImageProps, 'uri'>>`
   border-radius: ${({ size }) => (size === 'normal' ? '33.5px' : '16.75px')};
   border-width: 2px;
   border-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.gray100};
 `;
