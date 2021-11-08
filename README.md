@@ -83,7 +83,7 @@ O layout seguido foi baseado no aplicativo para iOS do Instagram, então por ess
 
 ## 🤔 Observações
 
-- O projeto foi desenvolvido utilizando o Expo Bara Workflow e adicionado o TypeScript logo em seguida, com esse "modo" de desenvolvimento é possível que num futuro seja possível adicionar bibliotecas que não sejam compatíveis com o Expo, além da disponibilização das pastas `android` e `ios`, fazendo com que seja possível aplicar configurações personalizadas para a aplicação; 
+- O projeto foi desenvolvido utilizando o Expo Bare Workflow e adicionado o TypeScript logo em seguida, utilizando esse "modo" de desenvolvimento é possível que no futuro seja adicionado bibliotecas que não sejam compatíveis com o Expo, além da disponibilização das pastas `android` e `ios`, fazendo com que seja possível aplicar configurações personalizadas para a aplicação; 
 - A principal ideia do projeto era aplicar a biblioteca React-Query para fazer o cache das requisições, sendo assim quando o usuário navegasse para outras páginas ou realizasse qualquer outro tipo de ação em que seria necessário buscar novamente os dados da API, aqueles dados das requisições já estariam cacheados e seriam exibidos já na tela. Para esse projeto o tempo para buscar novamente a requisição e desconsiderar a versão cacheada foi ajustada para 10 minutos; 
 - Tanto a lista de posts como a lista de stories foram desenvolvidas com custom hooks utilizando o react-query para realizar o cache das requisições. Sempre que o usuário chega ao final de cada lista, são buscados novos dados (estratégia de scroll infinito);
 - A biblioteca Date Fns foi utilizada para trabalhar de uma maneira mais simples com datas e tempos;
